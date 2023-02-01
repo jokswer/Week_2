@@ -24,5 +24,14 @@ namespace Player
 
             _rigidbody.velocity = worldVelocity;
         }
+
+        /// <summary>
+        /// Use only in FixedUpdate
+        /// </summary>
+        /// <param name="rotation"></param>
+        public void SetRotation(float rotation)
+        {
+            _rigidbody.angularVelocity = new Vector3(0f, rotation, 0f);
+        }
     }
 }
