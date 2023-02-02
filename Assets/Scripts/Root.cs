@@ -10,6 +10,7 @@ public class Root : MonoBehaviour
     [SerializeField] private Transform _startPoint;
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _rotationSpeed = 10f;
+    [SerializeField] private int _boostSpeed = 3;
     [SerializeField] private Vector3 _cameraOffset;
 
     private PlayerPresenter _playerPresenter;
@@ -19,7 +20,7 @@ public class Root : MonoBehaviour
         var playerObject = Instantiate(_player, _startPoint.position, Quaternion.identity);
         var playerView = playerObject.GetComponent<PlayerView>();
 
-        var playerModel = new PlayerModel(_speed, _rotationSpeed);
+        var playerModel = new PlayerModel(_speed, _rotationSpeed, _boostSpeed);
         _playerPresenter = new PlayerPresenter(playerView, playerModel);
         
         ConfigCamera(playerObject);
