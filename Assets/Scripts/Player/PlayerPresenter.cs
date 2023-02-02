@@ -22,11 +22,13 @@ namespace Player
         public void OnEnable()
         {
             _playerView.OnCoinTrigger += _coinsService.DestroyCoin;
+            _playerModel.OnEnable();
         }
 
         public void OnDisable()
         {
             _playerView.OnCoinTrigger -= _coinsService.DestroyCoin;
+            _playerModel.OnDisable();
         }
     }
 }

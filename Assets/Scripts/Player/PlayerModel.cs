@@ -1,24 +1,33 @@
-using UnityEngine;
-
 namespace Player
 {
     public class PlayerModel
     {
+        private PlayerInput _playerInput;
         private float _speed;
         private float _rotationSpeed;
         private int _boostSpeed;
 
-        //TODO: change to InputSystem and take out
-        public float HorizontalSpeed => Input.GetAxis("Horizontal") * _speed * BoostSpeed;
-        public float VerticalSpeed => Input.GetAxis("Vertical") * _speed * BoostSpeed;
-        public float RotationSpeed => Input.GetAxis("Mouse X") * _rotationSpeed;
-        public int BoostSpeed => Input.GetKey(KeyCode.LeftShift) ? _boostSpeed : 1;
+        public float HorizontalSpeed => _playerInput.Move.x * _speed * BoostSpeed;
+        public float VerticalSpeed => _playerInput.Move.y * _speed * BoostSpeed;
+        public float RotationSpeed => _playerInput.Rotation * _rotationSpeed;
+        public int BoostSpeed => _playerInput.IsBoost ? _boostSpeed : 1;
 
         public PlayerModel(float speed, float rotationSpeed, int boostSpeed)
         {
+            _playerInput = new PlayerInput();
             _speed = speed;
             _rotationSpeed = rotationSpeed;
             _boostSpeed = boostSpeed;
+        }
+        
+        public void OnEnable()
+        {
+            _playerInput.Enable();
+        }
+
+        public void OnDisable()
+        {
+            _playerInput.Disable();
         }
     }
 }

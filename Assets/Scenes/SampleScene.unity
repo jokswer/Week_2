@@ -3441,7 +3441,7 @@ MonoBehaviour:
   _coinsService: {fileID: 4396319}
   _startPoint: {fileID: 223123267}
   _speed: 5
-  _rotationSpeed: 10
+  _rotationSpeed: 1
   _boostSpeed: 2
   _cameraOffset: {x: 0, y: 2.5, z: -4.5}
 --- !u!1001 &1152967623
