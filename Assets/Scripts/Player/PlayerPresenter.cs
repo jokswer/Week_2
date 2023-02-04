@@ -4,13 +4,11 @@ namespace Player
     {
         private PlayerView _playerView;
         private PlayerModel _playerModel;
-        private CoinsService _coinsService;
 
-        public PlayerPresenter(PlayerView playerView, PlayerModel playerModel, CoinsService coinsService)
+        public PlayerPresenter(PlayerView playerView, PlayerModel playerModel)
         {
             _playerView = playerView;
             _playerModel = playerModel;
-            _coinsService = coinsService;
         }
 
         public void FixedUpdate()
@@ -21,13 +19,11 @@ namespace Player
 
         public void OnEnable()
         {
-            _playerView.OnCoinTrigger += _coinsService.DestroyCoin;
             _playerModel.OnEnable();
         }
 
         public void OnDisable()
         {
-            _playerView.OnCoinTrigger -= _coinsService.DestroyCoin;
             _playerModel.OnDisable();
         }
     }

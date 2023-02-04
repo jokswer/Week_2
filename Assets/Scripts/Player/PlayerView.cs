@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -7,8 +5,6 @@ namespace Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerView : MonoBehaviour
     {
-        public event Action<GameObject> OnCoinTrigger;
-        
         private Rigidbody _rigidbody;
 
         private void Start()
@@ -36,11 +32,6 @@ namespace Player
         public void SetRotation(float rotation)
         {
             _rigidbody.angularVelocity = new Vector3(0f, rotation, 0f);
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            OnCoinTrigger?.Invoke(other.GameObject());
         }
     }
 }

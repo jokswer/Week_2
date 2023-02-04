@@ -5,8 +5,7 @@ public class Root : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private Transform _cameraTransform;
-    [SerializeField] private CoinsService _coinsService;
-    
+
     [Header("Player Config")] 
     [SerializeField] private Transform _startPoint;
     [SerializeField] private float _speed = 5f;
@@ -22,7 +21,7 @@ public class Root : MonoBehaviour
         var playerView = playerObject.GetComponent<PlayerView>();
 
         var playerModel = new PlayerModel(_speed, _rotationSpeed, _boostSpeed);
-        _playerPresenter = new PlayerPresenter(playerView, playerModel, _coinsService);
+        _playerPresenter = new PlayerPresenter(playerView, playerModel);
         
         ConfigCamera(playerObject);
     }
